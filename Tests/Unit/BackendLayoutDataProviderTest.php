@@ -2,9 +2,8 @@
 
 namespace Sethorax\Fluidloader\Tests\Unit;
 
-use Sethorax\Fluidloader\Provider\BackendLayoutDataProvider;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
-use TYPO3\CMS\Backend\View\BackendLayout\BackendLayout;
+use Sethorax\Fluidloader\Provider\BackendLayoutDataProvider;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayoutCollection;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderContext;
 
@@ -14,13 +13,10 @@ class BackendLayoutDataProviderTest extends UnitTestCase
 
     protected $backendLayoutDataProvider;
 
-
-
     public function setUp()
     {
         $this->backendLayoutDataProvider = $this->getAccessibleMock(BackendLayoutDataProvider::class, ['dummy'], [], '');
     }
-
 
     /**
      * @test

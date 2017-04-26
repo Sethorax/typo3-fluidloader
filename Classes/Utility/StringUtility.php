@@ -4,7 +4,6 @@ namespace Sethorax\Fluidloader\Utility;
 
 /**
  * Class StringUtility
- * @package Sethorax\Fluidloader\Utility
  */
 class StringUtility
 {
