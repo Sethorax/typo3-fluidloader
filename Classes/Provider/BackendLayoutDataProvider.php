@@ -2,17 +2,16 @@
 
 namespace Sethorax\Fluidloader\Provider;
 
+use Sethorax\Fluidloader\Service\TemplateLoaderService;
+use Sethorax\Fluidloader\Utility\FlashMessageUtility;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayout;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayoutCollection;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderContext;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Sethorax\Fluidloader\Service\TemplateLoaderService;
-use Sethorax\Fluidloader\Utility\FlashMessageUtility;
 
 /**
  * Class BackendLayoutDataProvider
- * @package Sethorax\Fluidloader\Provider
  */
 class BackendLayoutDataProvider implements DataProviderInterface
 {
@@ -35,7 +34,7 @@ class BackendLayoutDataProvider implements DataProviderInterface
      * Gets a backend layout by (regular) identifier.
      *
      * @param string $identifier
-     * @param integer $pageId
+     * @param int $pageId
      * @return void|BackendLayout
      */
     public function getBackendLayout($identifier, $pageId)
@@ -48,7 +47,6 @@ class BackendLayoutDataProvider implements DataProviderInterface
             }
         }
     }
-
 
     /**
      * Creates a new backend layout using the given record data.
@@ -86,7 +84,6 @@ class BackendLayoutDataProvider implements DataProviderInterface
 
         return $backendLayout;
     }
-
 
     /**
      * Gets the template for the given page from the database

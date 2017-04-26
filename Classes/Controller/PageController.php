@@ -2,19 +2,18 @@
 
 namespace Sethorax\Fluidloader\Controller;
 
-use Sethorax\Fluidloader\Service\PageService;
 use Sethorax\Fluidloader\Service\ConfigurationService;
-use TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface;
+use Sethorax\Fluidloader\Service\PageService;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Class PageController
- * @package Sethorax\Fluidloader\Controller
  */
 class PageController extends ActionController implements ControllerInterface
 {
-    
+
     /**
      * @var PageService
      */
@@ -25,7 +24,6 @@ class PageController extends ActionController implements ControllerInterface
      */
     protected $pageConfigurationService;
 
-    
     /**
      * @param PageService $pageService
      */
@@ -33,7 +31,6 @@ class PageController extends ActionController implements ControllerInterface
     {
         $this->pageService = $pageService;
     }
-
 
     /**
      * @param ConfigurationService $pageConfigurationService
@@ -43,7 +40,6 @@ class PageController extends ActionController implements ControllerInterface
     {
         $this->pageConfigurationService = $pageConfigurationService;
     }
-
 
     /**
      * Render the selected template and set the layout and partial paths.

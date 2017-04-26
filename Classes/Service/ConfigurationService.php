@@ -7,7 +7,6 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Class ConfigurationService
- * @package Sethorax\Fluidloader\Service
  */
 class ConfigurationService implements SingletonInterface
 {
@@ -17,7 +16,6 @@ class ConfigurationService implements SingletonInterface
      */
     protected $objectManager;
 
-
     /**
      * @param ObjectManager $objectManager
      * @return void
@@ -26,7 +24,6 @@ class ConfigurationService implements SingletonInterface
     {
         $this->objectManager = $objectManager;
     }
-
 
     /**
      * @param Int $pageId

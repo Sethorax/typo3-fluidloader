@@ -4,7 +4,6 @@ namespace Sethorax\Fluidloader\Backend;
 
 /**
  * Class BackendLayoutTransformer
- * @package Sethorax\Fluidloader\Backend
  */
 class BackendLayoutTransformer
 {
@@ -13,7 +12,6 @@ class BackendLayoutTransformer
      * @var string
      */
     protected $xmlLayout;
-
 
     /**
      * BackendLayoutTransformer constructor.
@@ -24,7 +22,6 @@ class BackendLayoutTransformer
     {
         $this->xmlLayout = $xmlLayout;
     }
-
 
     /**
      * Check if XML configuration is valid
@@ -52,14 +49,14 @@ class BackendLayoutTransformer
     public function transformToTypoScript()
     {
         $backendLayoutConfiguration = "backend_layout {\n";
-        
+
         $rows = $this->xmlLayout->xpath('row');
         $rowCounter = 1;
 
         $colAndRowCounts = $this->calculateRowAndColCounts();
 
-        $backendLayoutConfiguration .= "colCount = " . $colAndRowCounts['colCount'] . "\n";
-        $backendLayoutConfiguration .= "rowCount = " . $colAndRowCounts['rowCount'] . "\n";
+        $backendLayoutConfiguration .= 'colCount = ' . $colAndRowCounts['colCount'] . "\n";
+        $backendLayoutConfiguration .= 'rowCount = ' . $colAndRowCounts['rowCount'] . "\n";
 
         $backendLayoutConfiguration .= "rows {\n";
 
@@ -75,10 +72,10 @@ class BackendLayoutTransformer
                 $colspan = (string) $column->xpath('@colspan')[0]->colspan[0];
 
                 $backendLayoutConfiguration .= $columnCounter . " {\n";
-                $backendLayoutConfiguration .= "name = " . $name . "\n";
-                $backendLayoutConfiguration .= "colPos = " . $colPos . "\n";
+                $backendLayoutConfiguration .= 'name = ' . $name . "\n";
+                $backendLayoutConfiguration .= 'colPos = ' . $colPos . "\n";
                 if (!empty($colspan)) {
-                    $backendLayoutConfiguration .= "colspan = " . $colspan . "\n";
+                    $backendLayoutConfiguration .= 'colspan = ' . $colspan . "\n";
                 }
                 $backendLayoutConfiguration .= "}\n";
 
@@ -95,7 +92,6 @@ class BackendLayoutTransformer
         return $backendLayoutConfiguration;
     }
 
-
     /**
      * Count rows and columns and return it as an array
      *
@@ -107,10 +103,10 @@ class BackendLayoutTransformer
         $colCount = 0;
 
         $rows = $this->xmlLayout->xpath('row');
-        
+
         foreach ($rows as $row) {
             $colCountInRow = count($row->xpath('column'));
-            
+
             if ($colCount < $colCountInRow) {
                 $colCount = $colCountInRow;
             }

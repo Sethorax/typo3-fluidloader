@@ -6,7 +6,6 @@ use Sethorax\Fluidloader\Utility\StringUtility;
 
 /**
  * Class TemplateParser
- * @package Sethorax\Fluidloader\Parser
  */
 class TemplateParser
 {
@@ -20,7 +19,6 @@ class TemplateParser
      * @var
      */
     protected $templateConfiguration;
-
 
     /**
      * TemplateParser constructor.
@@ -46,7 +44,6 @@ class TemplateParser
     {
         return $this->templateConfiguration;
     }
-
 
     /**
      * Parses the XML configuration within the fluid section "configuration"

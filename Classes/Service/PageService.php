@@ -5,12 +5,9 @@ namespace Sethorax\Fluidloader\Service;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use Sethorax\Fluidloader\Service\ConfigurationService;
-use Sethorax\Fluidloader\Service\TemplateLoaderService;
 
 /**
  * Class PageService
- * @package Sethorax\Fluidloader\Service
  */
 class PageService implements SingletonInterface
 {
@@ -29,8 +26,6 @@ class PageService implements SingletonInterface
      * @var TemplateLoaderService
      */
     protected $templateLoaderService;
-
-
 
     /**
      * @param ObjectManager $objectManager
@@ -58,7 +53,6 @@ class PageService implements SingletonInterface
     {
         $this->templateLoaderService = $templateLoaderService;
     }
-
 
     /**
      * Gets the template for the current page and returns the root paths

@@ -2,14 +2,13 @@
 
 namespace Sethorax\Fluidloader\Utility;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Class FlashMessageUtility
- * @package Sethorax\Fluidloader\Utility
  */
 class FlashMessageUtility
 {
@@ -68,7 +67,6 @@ class FlashMessageUtility
     {
         self::addFlashMessage($message, $header, FlashMessage::ERROR);
     }
-
 
     /**
      * Creates the actual flash message and adds it to the queue
