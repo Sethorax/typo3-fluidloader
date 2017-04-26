@@ -2,12 +2,11 @@
 
 namespace Sethorax\Fluidloader\Backend;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Sethorax\Fluidloader\Service\TemplateLoaderService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class TemplateFileLayoutSelector
- * @package Sethorax\Fluidloader\Backend
  */
 class TemplateFileLayoutSelector
 {

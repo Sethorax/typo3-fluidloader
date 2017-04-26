@@ -2,14 +2,13 @@
 
 namespace Sethorax\Fluidloader\Service;
 
+use Sethorax\Fluidloader\Backend\BackendLayoutTransformer;
+use Sethorax\Fluidloader\Parser\TemplateParser;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Sethorax\Fluidloader\Parser\TemplateParser;
-use Sethorax\Fluidloader\Backend\BackendLayoutTransformer;
 
 /**
  * Class TemplateLoaderService
- * @package Sethorax\Fluidloader\Service
  */
 class TemplateLoaderService implements SingletonInterface
 {
@@ -23,7 +22,6 @@ class TemplateLoaderService implements SingletonInterface
      * @var array
      */
     protected $templates;
-
 
     /**
      * TemplateLoaderService constructor.
@@ -40,7 +38,6 @@ class TemplateLoaderService implements SingletonInterface
         $this->createTemplatesArray();
     }
 
-
     /**
      * Checks the available templates in the template root path
      * If template and configuration is valid it is added to the select array
@@ -50,7 +47,7 @@ class TemplateLoaderService implements SingletonInterface
     public function getAvailableTemplates()
     {
         $selectItems = [];
-        
+
         if (isset($this->rootPaths['templateRootPath'])) {
             foreach ($this->templates as $id => $templateData) {
                 $templateName = (string) $this->getTemplateName($templateData['path'])[0];
@@ -99,7 +96,6 @@ class TemplateLoaderService implements SingletonInterface
             return false;
         }
     }
-
 
     /**
      * Gets the template name from the template configuration
