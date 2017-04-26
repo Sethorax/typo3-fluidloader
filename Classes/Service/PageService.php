@@ -5,16 +5,12 @@ namespace Sethorax\Fluidloader\Service;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use Sethorax\Fluidloader\Service\ConfigurationService;
-use Sethorax\Fluidloader\Service\TemplateLoaderService;
 
 /**
- * Class PageService
- * @package Sethorax\Fluidloader\Service
+ * Class PageService.
  */
 class PageService implements SingletonInterface
 {
-
     /**
      * @var ObjectManager
      */
@@ -30,10 +26,9 @@ class PageService implements SingletonInterface
      */
     protected $templateLoaderService;
 
-
-
     /**
      * @param ObjectManager $objectManager
+     *
      * @return void
      */
     public function injectObjectManager(ObjectManager $objectManager)
@@ -43,6 +38,7 @@ class PageService implements SingletonInterface
 
     /**
      * @param ConfigurationService $configurationService
+     *
      * @return void
      */
     public function injectConfigurationService(ConfigurationService $configurationService)
@@ -52,6 +48,7 @@ class PageService implements SingletonInterface
 
     /**
      * @param TemplateLoaderService $templateLoaderService
+     *
      * @return void
      */
     public function injectTemplateLoaderService(TemplateLoaderService $templateLoaderService)
@@ -59,9 +56,8 @@ class PageService implements SingletonInterface
         $this->templateLoaderService = $templateLoaderService;
     }
 
-
     /**
-     * Gets the template for the current page and returns the root paths
+     * Gets the template for the current page and returns the root paths.
      *
      * @return array
      */
@@ -74,9 +70,9 @@ class PageService implements SingletonInterface
         $partialRootPath = GeneralUtility::getFileAbsFileName($this->configurationService->getExtensionConfiguration()['partialRootPath']);
 
         return [
-            'templatePath' => $templateData['path'],
-            'layoutRootPath' => $layoutRootPath,
-            'partialRootPath' => $partialRootPath
+            'templatePath'    => $templateData['path'],
+            'layoutRootPath'  => $layoutRootPath,
+            'partialRootPath' => $partialRootPath,
         ];
     }
 }

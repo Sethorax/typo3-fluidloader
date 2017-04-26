@@ -6,20 +6,18 @@ use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * Class ConfigurationService
- * @package Sethorax\Fluidloader\Service
+ * Class ConfigurationService.
  */
 class ConfigurationService implements SingletonInterface
 {
-
     /**
      * @var ObjectManager
      */
     protected $objectManager;
 
-
     /**
      * @param ObjectManager $objectManager
+     *
      * @return void
      */
     public function injectObjectManager(ObjectManager $objectManager)
@@ -27,9 +25,9 @@ class ConfigurationService implements SingletonInterface
         $this->objectManager = $objectManager;
     }
 
-
     /**
-     * @param Int $pageId
+     * @param int $pageId
+     *
      * @return array
      */
     public function getPageConfiguration($pageId = 0)
@@ -44,7 +42,7 @@ class ConfigurationService implements SingletonInterface
     }
 
     /**
-     * Returns the extension configuration as an array
+     * Returns the extension configuration as an array.
      *
      * @return mixed
      */

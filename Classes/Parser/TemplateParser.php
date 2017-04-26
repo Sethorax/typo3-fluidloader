@@ -5,12 +5,10 @@ namespace Sethorax\Fluidloader\Parser;
 use Sethorax\Fluidloader\Utility\StringUtility;
 
 /**
- * Class TemplateParser
- * @package Sethorax\Fluidloader\Parser
+ * Class TemplateParser.
  */
 class TemplateParser
 {
-
     /**
      * @var string
      */
@@ -21,10 +19,9 @@ class TemplateParser
      */
     protected $templateConfiguration;
 
-
     /**
      * TemplateParser constructor.
-     * Gets file contents of $templatePath if it exists and parses the configuration
+     * Gets file contents of $templatePath if it exists and parses the configuration.
      *
      * @param $templatePath
      */
@@ -38,7 +35,7 @@ class TemplateParser
     }
 
     /**
-     * Gets the template configuration
+     * Gets the template configuration.
      *
      * @return mixed
      */
@@ -47,9 +44,8 @@ class TemplateParser
         return $this->templateConfiguration;
     }
 
-
     /**
-     * Parses the XML configuration within the fluid section "configuration"
+     * Parses the XML configuration within the fluid section "configuration".
      */
     protected function parseConfiguration()
     {

@@ -2,20 +2,18 @@
 
 namespace Sethorax\Fluidloader\Utility;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * Class FlashMessageUtility
- * @package Sethorax\Fluidloader\Utility
+ * Class FlashMessageUtility.
  */
 class FlashMessageUtility
 {
-
     /**
-     * Adds a flash message with type NOTICE
+     * Adds a flash message with type NOTICE.
      *
      * @param string $message
      * @param string $header
@@ -26,7 +24,7 @@ class FlashMessageUtility
     }
 
     /**
-     * Adds a flash message with type INFO
+     * Adds a flash message with type INFO.
      *
      * @param string $message
      * @param string $header
@@ -37,7 +35,7 @@ class FlashMessageUtility
     }
 
     /**
-     * Adds a flash message with type OK
+     * Adds a flash message with type OK.
      *
      * @param string $message
      * @param string $header
@@ -48,7 +46,7 @@ class FlashMessageUtility
     }
 
     /**
-     * Adds a flash message with type WARNING
+     * Adds a flash message with type WARNING.
      *
      * @param string $message
      * @param string $header
@@ -59,7 +57,7 @@ class FlashMessageUtility
     }
 
     /**
-     * Adds a flash message with type ERROR
+     * Adds a flash message with type ERROR.
      *
      * @param string $message
      * @param string $header
@@ -69,9 +67,8 @@ class FlashMessageUtility
         self::addFlashMessage($message, $header, FlashMessage::ERROR);
     }
 
-
     /**
-     * Creates the actual flash message and adds it to the queue
+     * Creates the actual flash message and adds it to the queue.
      *
      * @param string $message
      * @param string $header
