@@ -3,17 +3,14 @@
 namespace Sethorax\Fluidloader\Backend;
 
 /**
- * Class BackendLayoutTransformer
- * @package Sethorax\Fluidloader\Backend
+ * Class BackendLayoutTransformer.
  */
 class BackendLayoutTransformer
 {
-
     /**
      * @var string
      */
     protected $xmlLayout;
-
 
     /**
      * BackendLayoutTransformer constructor.
@@ -25,9 +22,8 @@ class BackendLayoutTransformer
         $this->xmlLayout = $xmlLayout;
     }
 
-
     /**
-     * Check if XML configuration is valid
+     * Check if XML configuration is valid.
      *
      * @return bool
      */
@@ -45,26 +41,26 @@ class BackendLayoutTransformer
     }
 
     /**
-     * Transform XML configuration into TypoScript version
+     * Transform XML configuration into TypoScript version.
      *
      * @return string
      */
     public function transformToTypoScript()
     {
         $backendLayoutConfiguration = "backend_layout {\n";
-        
+
         $rows = $this->xmlLayout->xpath('row');
         $rowCounter = 1;
 
         $colAndRowCounts = $this->calculateRowAndColCounts();
 
-        $backendLayoutConfiguration .= "colCount = " . $colAndRowCounts['colCount'] . "\n";
-        $backendLayoutConfiguration .= "rowCount = " . $colAndRowCounts['rowCount'] . "\n";
+        $backendLayoutConfiguration .= 'colCount = '.$colAndRowCounts['colCount']."\n";
+        $backendLayoutConfiguration .= 'rowCount = '.$colAndRowCounts['rowCount']."\n";
 
         $backendLayoutConfiguration .= "rows {\n";
 
         foreach ($rows as $row) {
-            $backendLayoutConfiguration .= $rowCounter . " {\ncolumns {\n";
+            $backendLayoutConfiguration .= $rowCounter." {\ncolumns {\n";
 
             $columns = $row->xpath('column');
             $columnCounter = 1;
@@ -74,11 +70,11 @@ class BackendLayoutTransformer
                 $colPos = (string) $column->xpath('@pos')[0]->pos[0];
                 $colspan = (string) $column->xpath('@colspan')[0]->colspan[0];
 
-                $backendLayoutConfiguration .= $columnCounter . " {\n";
-                $backendLayoutConfiguration .= "name = " . $name . "\n";
-                $backendLayoutConfiguration .= "colPos = " . $colPos . "\n";
+                $backendLayoutConfiguration .= $columnCounter." {\n";
+                $backendLayoutConfiguration .= 'name = '.$name."\n";
+                $backendLayoutConfiguration .= 'colPos = '.$colPos."\n";
                 if (!empty($colspan)) {
-                    $backendLayoutConfiguration .= "colspan = " . $colspan . "\n";
+                    $backendLayoutConfiguration .= 'colspan = '.$colspan."\n";
                 }
                 $backendLayoutConfiguration .= "}\n";
 
@@ -95,9 +91,8 @@ class BackendLayoutTransformer
         return $backendLayoutConfiguration;
     }
 
-
     /**
-     * Count rows and columns and return it as an array
+     * Count rows and columns and return it as an array.
      *
      * @return array
      */
@@ -107,10 +102,10 @@ class BackendLayoutTransformer
         $colCount = 0;
 
         $rows = $this->xmlLayout->xpath('row');
-        
+
         foreach ($rows as $row) {
             $colCountInRow = count($row->xpath('column'));
-            
+
             if ($colCount < $colCountInRow) {
                 $colCount = $colCountInRow;
             }
@@ -118,7 +113,7 @@ class BackendLayoutTransformer
 
         return [
             'rowCount' => $rowCount,
-            'colCount' => $colCount
+            'colCount' => $colCount,
         ];
     }
 }

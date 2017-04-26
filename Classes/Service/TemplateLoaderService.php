@@ -2,18 +2,16 @@
 
 namespace Sethorax\Fluidloader\Service;
 
+use Sethorax\Fluidloader\Backend\BackendLayoutTransformer;
+use Sethorax\Fluidloader\Parser\TemplateParser;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Sethorax\Fluidloader\Parser\TemplateParser;
-use Sethorax\Fluidloader\Backend\BackendLayoutTransformer;
 
 /**
- * Class TemplateLoaderService
- * @package Sethorax\Fluidloader\Service
+ * Class TemplateLoaderService.
  */
 class TemplateLoaderService implements SingletonInterface
 {
-
     /**
      * @var array
      */
@@ -24,10 +22,9 @@ class TemplateLoaderService implements SingletonInterface
      */
     protected $templates;
 
-
     /**
      * TemplateLoaderService constructor.
-     * Sets the root paths and creates the templates array
+     * Sets the root paths and creates the templates array.
      */
     public function __construct()
     {
@@ -40,17 +37,16 @@ class TemplateLoaderService implements SingletonInterface
         $this->createTemplatesArray();
     }
 
-
     /**
      * Checks the available templates in the template root path
-     * If template and configuration is valid it is added to the select array
+     * If template and configuration is valid it is added to the select array.
      *
      * @return void
      */
     public function getAvailableTemplates()
     {
         $selectItems = [];
-        
+
         if (isset($this->rootPaths['templateRootPath'])) {
             foreach ($this->templates as $id => $templateData) {
                 $templateName = (string) $this->getTemplateName($templateData['path'])[0];
@@ -65,9 +61,10 @@ class TemplateLoaderService implements SingletonInterface
     }
 
     /**
-     * Gets the template by id
+     * Gets the template by id.
      *
      * @param string $id
+     *
      * @return mixed
      */
     public function getTemplateById($id)
@@ -76,9 +73,10 @@ class TemplateLoaderService implements SingletonInterface
     }
 
     /**
-     * Gets the typoscript version of the specified backend layout configuration
+     * Gets the typoscript version of the specified backend layout configuration.
      *
      * @param string $id
+     *
      * @return bool|string
      */
     public function getBackendLayoutByTemplateId($id)
@@ -100,11 +98,11 @@ class TemplateLoaderService implements SingletonInterface
         }
     }
 
-
     /**
-     * Gets the template name from the template configuration
+     * Gets the template name from the template configuration.
      *
      * @param string $templatePath
+     *
      * @return mixed
      */
     protected function getTemplateName($templatePath)
@@ -116,7 +114,7 @@ class TemplateLoaderService implements SingletonInterface
     }
 
     /**
-     * Creates the templates array with filename and path
+     * Creates the templates array with filename and path.
      */
     protected function createTemplatesArray()
     {
@@ -129,7 +127,7 @@ class TemplateLoaderService implements SingletonInterface
 
                 $templates[$key] = [
                     'filename' => $template,
-                    'path' => $this->rootPaths['templateRootPath'] . '/' . $template
+                    'path'     => $this->rootPaths['templateRootPath'].'/'.$template,
                 ];
             }
 
@@ -138,9 +136,10 @@ class TemplateLoaderService implements SingletonInterface
     }
 
     /**
-     * Reads all available html files in the template root path
+     * Reads all available html files in the template root path.
      *
      * @param string $dir
+     *
      * @return array
      */
     protected function getTemplateFilesFromDir($dir)
@@ -163,9 +162,9 @@ class TemplateLoaderService implements SingletonInterface
     }
 
     /**
-     * Sets the root path for the given $key
+     * Sets the root path for the given $key.
      *
-     * @param array $extConf
+     * @param array  $extConf
      * @param string $key
      */
     protected function setRootPath($extConf, $key)

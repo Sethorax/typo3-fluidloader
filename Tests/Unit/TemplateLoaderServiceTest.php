@@ -2,36 +2,37 @@
 
 namespace Sethorax\Fluidloader\Tests\Unit;
 
-use Sethorax\Fluidloader\Service\TemplateLoaderService;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Sethorax\Fluidloader\Service\TemplateLoaderService;
 
-
-class TemplateLoaderServiceTest extends UnitTestCase {
-    
+class TemplateLoaderServiceTest extends UnitTestCase
+{
     protected $backupGlobals;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->backupGlobals = $GLOBALS;
 
         shell_exec('mkdir -p ./.Build/Web/fileadmin');
         shell_exec('cp -R ./Tests/Fixtures/Files/. ./.Build/Web/fileadmin');
     }
 
-    public function tearDown() {
+    public function tearDown()
+    {
         $GLOBALS = $this->backupGlobals;
 
         shell_exec('rm -rf ./.Build/Web/fileadmin');
     }
 
-
     /**
      * @test
      */
-    public function getAvailableTemplates() {
+    public function getAvailableTemplates()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/CorrectFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
@@ -43,11 +44,12 @@ class TemplateLoaderServiceTest extends UnitTestCase {
     /**
      * @test
      */
-    public function getTemplatesWithNoRootPaths() {
+    public function getTemplatesWithNoRootPaths()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => '',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
@@ -56,15 +58,15 @@ class TemplateLoaderServiceTest extends UnitTestCase {
         $this->assertEquals($items, []);
     }
 
-
     /**
      * @test
      */
-    public function getTemplatesWithNoContent() {
+    public function getTemplatesWithNoContent()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/EmptyFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
@@ -76,11 +78,12 @@ class TemplateLoaderServiceTest extends UnitTestCase {
     /**
      * @test
      */
-    public function getTemplatesWithMixedContent() {
+    public function getTemplatesWithMixedContent()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/MixedFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
@@ -92,30 +95,32 @@ class TemplateLoaderServiceTest extends UnitTestCase {
     /**
      * @test
      */
-    public function canCreateItemArrayWithCorrectTemplateConfiguration() {
+    public function canCreateItemArrayWithCorrectTemplateConfiguration()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/CorrectFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
         $items = $tls->getAvailableTemplates();
 
         $this->assertEquals($items, [
-            ["Template One", "templateone"],
-            ["Template Two", "templatetwo"]
+            ['Template One', 'templateone'],
+            ['Template Two', 'templatetwo'],
         ]);
     }
 
     /**
      * @test
      */
-    public function canGetTemplateById() {
+    public function canGetTemplateById()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/CorrectFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
@@ -127,17 +132,18 @@ class TemplateLoaderServiceTest extends UnitTestCase {
     /**
      * @test
      */
-    public function canGetBackendLayoutByTemplateId () {
+    public function canGetBackendLayoutByTemplateId()
+    {
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['fluidloader'] = serialize([
             'templateRootPath' => 'fileadmin/CorrectFiles',
-            'layoutRootPath' => '',
-            'partialRootPath' => ''
+            'layoutRootPath'   => '',
+            'partialRootPath'  => '',
         ]);
 
         $tls = new TemplateLoaderService();
         $layout = $tls->getBackendLayoutByTemplateId('templatetwo');
 
-        $this->assertEquals($layout, "backend_layout {
+        $this->assertEquals($layout, 'backend_layout {
 colCount = 1
 rowCount = 3
 rows {
@@ -167,7 +173,6 @@ colPos = 2
 }
 }
 }
-");
-
+');
     }
 }
