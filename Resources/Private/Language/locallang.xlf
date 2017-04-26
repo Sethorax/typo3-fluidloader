@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="fluidloader" date="2017-04-23T12:00:00+01:00">
+		<header/>
+		<body>
+			<trans-unit id="pages.tx_fluidloader_layout">
+				<source>Page layout</source>
+			</trans-unit>
+
+			<trans-unit id="backendlayout.name">
+				<source>Fluid Templateloader</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
