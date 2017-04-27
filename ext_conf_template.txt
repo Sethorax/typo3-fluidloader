@@ -1,8 +1,8 @@
-# cat=basic/enable; type=string; label=Relative path to the template directory.
+# cat=basic/enable; type=string; label=LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:extconf.template_root_path
 templateRootPath = 
 
-# cat=basic/enable; type=string; label=Relative path to the layout directory.
+# cat=basic/enable; type=string; label=LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:extconf.layout_root_path
 layoutRootPath = 
 
-# cat=basic/enable; type=string; label=Relative path to the partial directory.
+# cat=basic/enable; type=string; label=LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:extconf.partial_root_path
 partialRootPath = 

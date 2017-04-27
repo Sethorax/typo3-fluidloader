@@ -9,6 +9,7 @@ use TYPO3\CMS\Backend\View\BackendLayout\BackendLayoutCollection;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderContext;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class BackendLayoutDataProvider
@@ -67,12 +68,22 @@ class BackendLayoutDataProvider implements DataProviderInterface
                     if ($parsedConfiguration) {
                         $layoutConfiguration = $parsedConfiguration;
                     } else {
-                        FlashMessageUtility::showError('Template directory not specified!', 'Configuration Error');
+                        FlashMessageUtility::showError(
+                            LocalizationUtility::translate('flashmessages.dir_not_found_error.message', 'fluidloader'),
+                            LocalizationUtility::translate('flashmessages.dir_not_found_error.title', 'fluidloader')
+                        );
                     }
                 } else {
+                    FlashMessageUtility::showError(
+                        LocalizationUtility::translate('flashmessages.parse_error.message', 'fluidloader'),
+                        LocalizationUtility::translate('flashmessages.parse_error.title', 'fluidloader')
+                    );
                 }
             } else {
-                FlashMessageUtility::showWarning('No template selected for this page!', 'Template not specified!');
+                FlashMessageUtility::showWarning(
+                    LocalizationUtility::translate('flashmessages.template_not_found.message', 'fluidloader'),
+                    LocalizationUtility::translate('flashmessages.template_not_found.title', 'fluidloader')
+                );
             }
         }
 

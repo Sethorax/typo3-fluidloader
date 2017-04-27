@@ -5,7 +5,7 @@ defined('TYPO3_MODE') or die('Access denied.');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', [
     'tx_fluidloader_layout' => [
         'exclude' => 1,
-        'label' => 'Seitenlayout',
+        'label' => 'LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:pages.tx_fluidloader_layout',
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
@@ -22,6 +22,6 @@ defined('TYPO3_MODE') or die('Access denied.');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    '--div--;Seitenlayout,
-    --palette--;Allgemein;tx_fluidloader_layouts'
+    '--div--;LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:pages.tx_fluidloader_layout,
+    --palette--;LLL:EXT:fluidloader/Resources/Private/Language/locallang.xlf:pages.palettes.page_layout;tx_fluidloader_layouts'
 );

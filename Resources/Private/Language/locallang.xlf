@@ -7,8 +7,50 @@
 				<source>Page layout</source>
 			</trans-unit>
 
+			<trans-unit id="pages.palettes.page_layout">
+				<source>Page layout</source>
+			</trans-unit>
+
+
+
 			<trans-unit id="backendlayout.name">
 				<source>Fluid Templateloader</source>
+			</trans-unit>
+
+
+			<trans-unit id="extconf.template_root_path">
+				<source>Relative path to the template directory.</source>
+			</trans-unit>
+
+			<trans-unit id="extconf.layout_root_path">
+				<source>Relative path to the layout directory.</source>
+			</trans-unit>
+
+			<trans-unit id="extconf.partial_root_path">
+				<source>Relative path to the partial directory.</source>
+			</trans-unit>
+
+
+
+			<trans-unit id="flashmessages.dir_not_found_error.title">
+				<source>Configuration Error</source>
+			</trans-unit>
+			<trans-unit id="flashmessages.dir_not_found_error.message">
+				<source>Template directory not specified!</source>
+			</trans-unit>
+
+			<trans-unit id="flashmessages.parse_error.title">
+				<source>Parse Error</source>
+			</trans-unit>
+			<trans-unit id="flashmessages.parse_error.message">
+				<source>Error parsing template configuration!</source>
+			</trans-unit>
+
+			<trans-unit id="flashmessages.template_not_found.title">
+				<source>Configuration Error</source>
+			</trans-unit>
+			<trans-unit id="flashmessages.template_not_found.message">
+				<source>No template selected for this page!</source>
 			</trans-unit>
 		</body>
 	</file>
