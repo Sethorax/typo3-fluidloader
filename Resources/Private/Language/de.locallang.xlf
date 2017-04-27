@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="fluidloader" date="2017-04-23T12:00:00+01:00">
+        <header/>
+        <body>
+            <trans-unit id="pages.tx_fluidloader_layout">
+                <source>Page layout</source>
+                <target>Seitenlayout</target>
+            </trans-unit>
+
+            <trans-unit id="pages.palettes.page_layout">
+                <source>Page layout</source>
+                <target>Seitenlayout</target>
+            </trans-unit>
+
+
+
+            <trans-unit id="backendlayout.name">
+                <source>Fluid Templateloader</source>
+                <target>Fluid Templateloader</target>
+            </trans-unit>
+
+
+            <trans-unit id="extconf.template_root_path">
+                <source>Relative path to the template directory.</source>
+                <target>Relativer Pfad zum Template-Verzeichnis.</target>
+            </trans-unit>
+
+            <trans-unit id="extconf.layout_root_path">
+                <source>Relative path to the layout directory.</source>
+                <target>Relativer Pfad zum Layout-Verzeichnis.</target>
+            </trans-unit>
+
+            <trans-unit id="extconf.partial_root_path">
+                <source>Relative path to the partial directory.</source>
+                <target>Relativer Pfad zum Partial-Verzeichnis.</target>
+            </trans-unit>
+
+
+
+            <trans-unit id="flashmessages.dir_not_found_error.title">
+                <source>Configuration Error</source>
+                <target>Konfigurationsfehler</target>
+            </trans-unit>
+            <trans-unit id="flashmessages.dir_not_found_error.message">
+                <source>Template directory not specified!</source>
+                <target>Template-Verzeichnis nicht angegeben!</target>
+            </trans-unit>
+
+            <trans-unit id="flashmessages.parse_error.title">
+                <source>Parse Error</source>
+                <target>Parserfehler</target>
+            </trans-unit>
+            <trans-unit id="flashmessages.parse_error.message">
+                <source>Error parsing template configuration!</source>
+                <target>Fehler beim Parsen des Templates!</target>
+            </trans-unit>
+
+            <trans-unit id="flashmessages.template_not_found.title">
+                <source>Configuration Error</source>
+                <target>Konfigurationsfehler</target>
+            </trans-unit>
+            <trans-unit id="flashmessages.template_not_found.message">
+                <source>No template selected for this page!</source>
+                <target>Kein Template für diese Seite ausgewählt!</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
