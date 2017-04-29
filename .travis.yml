@@ -3,29 +3,30 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      env: TYPO3_VERSION=^8
-    - php: 7.1
-      env: TYPO3_VERSION=^8
+  - php: 7.0
+    env: TYPO3_VERSION=^8
+  - php: 7.1
+    env: TYPO3_VERSION=^8
 
 sudo: false
 
 cache:
   directories:
-    - $HOME/.composer/cache
+  - $HOME/.composer/cache
+
+notifications:
+  slack:
+    secure: wQYE1Q0Z25VyUebBihelEsXstfL9zx8D3IuLvVIm6xqePfzEhDDaJzl+CtkqLpKbL+xuuuzdZ4dqL/EhppYoruwbf83J9vuoCWTLWnvsl/xLEMnoGJXP/tCxtOvu2J+oQ+B2JorscTqTy7ZhrBxye7zBpIN0BwPh/95c5OQ/YyPMlR7BSAklPpvzbhJ+xIZrUYRY9OGc5DcHWTc99RNJ+rjESjNHK5yTalLTIcYJ9t5A0UApl3UO705FHAhIBTu8aDTnR2Yts36T/p6ipLiiN72I41dlh6dGSpw8pVmJYGFAZIWbNRuT1qS6Ly1puycHtdxJaJ/DPBxjard3WBz4OfRswCQ7rxgGbN3a83eH+eSzp8EDjzjYyf7CKOclLeVGHH+TLRoPN6IXvKhmfPZAKELniUezZyeBPXViowLD9yqzvW30nj3wCaW3ENckA/GqiWUv8T11hp9tjpBRadLZvjACh3CcRZdiTuyhuui98Y+/j8FG6ZcReHRmX1uocSxDO5PDfdGuU6msfU0Y9CEvS1ilBgWvsImuTEERHtPrwClxdlvn+bqBj0LEapNEzw6qImR1zMVPg1y/qoVML1jftKcLOb+EXEcnP8vg3FWQbNa6+0OypJOMxmRvqXqhSNasRggRkNPLeVbVMxGriFuMDx/qz1eEic9r+mWCzVTRQTw=
 
 before_install:
-  - composer self-update
-  - composer --version
+- composer self-update
+- composer --version
 
 before_script:
-  - composer require typo3/cms=$TYPO3_VERSION
-  # Restore composer.json
-  - git checkout composer.json
-  - export TYPO3_PATH_WEB=$PWD/.Build/Web
+- composer require typo3/cms=$TYPO3_VERSION
+- git checkout composer.json
+- export TYPO3_PATH_WEB=$PWD/.Build/Web
 
 script:
-  - >
-    echo;
-    echo "Running unit tests";
-    .Build/bin/phpunit --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
+- echo; echo "Running unit tests"; .Build/bin/phpunit --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml
+  Tests/Unit/
