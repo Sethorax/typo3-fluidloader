@@ -59,7 +59,7 @@ class BackendLayoutDataProvider implements DataProviderInterface
         $layoutConfiguration = \TYPO3\CMS\Backend\View\BackendLayoutView::getDefaultColumnLayout();
 
         if ($pageId !== 0) {
-            $templateId = $this->getTemplateIdOfPage($pageId);
+            $templateId = $this->getTemplateId($pageId);
 
             if ($templateId !== '-1') {
                 $parsedConfiguration = GeneralUtility::makeInstance(TemplateLoaderService::class)->getBackendLayoutByTemplateId($templateId);
@@ -102,11 +102,55 @@ class BackendLayoutDataProvider implements DataProviderInterface
      * @param $pageId
      * @return string
      */
-    protected function getTemplateIdOfPage($pageId)
+    protected function getTemplateId($pageId)
     {
-        $attributeName = 'tx_fluidloader_layout';
+        $templateId = $this->getTemplateIdOfPage($pageId, 'tx_fluidloader_layout');
 
+        if ($templateId === '-1' || $templateId === NULL) {
+            $templateId = $this->getInheritedTemplateId($pageId);
+        }
+
+        if ($templateId === NULL) {
+            $templateId = '-1';
+        }
+
+        return $templateId;
+    }
+
+    /**
+     * Checks parent pages for template meant for inheritance.
+     *
+     * @param $pageId
+     * @return string
+     */
+    protected function getInheritedTemplateId($pageId)
+    {   
+        $templateId = '-1';
+        $currentPageId = $pageId;
+
+        while (($templateId === '-1' || $templateId === NULL) && $currentPageId !== 0) {
+            $currentPageId = $this->getPidOfPage($currentPageId);
+            $templateId = $this->getTemplateIdOfPage($currentPageId, 'tx_fluidloader_subpage_layout');
+        }
+
+        return $templateId;
+    }
+
+    /**
+     * Gets the template ID of the given page from the database.
+     *
+     * @param $pageId
+     * @param $attributeName
+     * @return string
+     */
+    protected function getTemplateIdOfPage($pageId, $attributeName)
+    {
         $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('pages');
+        
+        $queryBuilder
+            ->getRestrictions()
+            ->removeAll();
+        
         $layout = $queryBuilder
             ->select($attributeName)
             ->from('pages')
@@ -115,5 +159,29 @@ class BackendLayoutDataProvider implements DataProviderInterface
             ->fetch()[$attributeName];
 
         return $layout;
+    }
+
+    /**
+     * Gets the pid of the given page.
+     *
+     * @param $pageId
+     * @return string
+     */
+    protected function getPidOfPage($pageId)
+    {
+        $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('pages');
+        
+        $queryBuilder
+            ->getRestrictions()
+            ->removeAll();
+
+        $pid = $queryBuilder
+            ->select('pid')
+            ->from('pages')
+            ->where($queryBuilder->expr()->eq('uid', $pageId))
+            ->execute()
+            ->fetch()['pid'];
+
+        return $pid;
     }
 }

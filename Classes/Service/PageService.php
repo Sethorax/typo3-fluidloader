@@ -57,20 +57,51 @@ class PageService implements SingletonInterface
     /**
      * Gets the template for the current page and returns the root paths
      *
-     * @return array
+     * @return array|FALSE
      */
     public function getPageTemplate()
     {
         $templateId = $this->configurationService->getPageConfiguration()['tx_fluidloader_layout'];
-        $templateData = $this->templateLoaderService->getTemplateById($templateId);
+        
+        if ($templateId === '-1' || $templateId === NULL) {
+            $templateId = $this->getInheritedPageTemplateId();
+        }
 
-        $layoutRootPath = GeneralUtility::getFileAbsFileName($this->configurationService->getExtensionConfiguration()['layoutRootPath']);
-        $partialRootPath = GeneralUtility::getFileAbsFileName($this->configurationService->getExtensionConfiguration()['partialRootPath']);
+        if ($templateId === NULL) {
+            $templateId = '-1';
+        }
 
-        return [
-            'templatePath' => $templateData['path'],
-            'layoutRootPath' => $layoutRootPath,
-            'partialRootPath' => $partialRootPath
-        ];
+        if ($templateId !== '-1') {
+            $templateData = $this->templateLoaderService->getTemplateById($templateId);
+            $layoutRootPath = GeneralUtility::getFileAbsFileName($this->configurationService->getExtensionConfiguration()['layoutRootPath']);
+            $partialRootPath = GeneralUtility::getFileAbsFileName($this->configurationService->getExtensionConfiguration()['partialRootPath']);
+
+            return [
+                'templatePath' => $templateData['path'],
+                'layoutRootPath' => $layoutRootPath,
+                'partialRootPath' => $partialRootPath
+            ];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks template id of parent pages for inheritance.
+     *
+     * @return string
+     */
+    protected function getInheritedPageTemplateId()
+    {
+        $templateId = '-1';
+        $pageId = $this->configurationService->getPageConfiguration()['pid'];
+
+        while (($templateId === '-1' || $templateId === NULL) && $pageId !== 0) {
+            $config = $this->configurationService->getPageConfiguration($pageId);
+            $pageId = $config['pid'];
+            $templateId = $config['tx_fluidloader_subpage_layout'];
+        }
+
+        return $templateId;
     }
 }

@@ -6,6 +6,9 @@
 			<trans-unit id="pages.tx_fluidloader_layout">
 				<source>Page layout</source>
 			</trans-unit>
+			<trans-unit id="pages.tx_fluidloader_subpage_layout">
+				<source>Page layout - Subpages</source>
+			</trans-unit>
 
 			<trans-unit id="pages.palettes.page_layout">
 				<source>Page layout</source>

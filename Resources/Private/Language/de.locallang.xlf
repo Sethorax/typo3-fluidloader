@@ -7,6 +7,10 @@
                 <source>Page layout</source>
                 <target>Seitenlayout</target>
             </trans-unit>
+            <trans-unit id="pages.tx_fluidloader_subpage_layout">
+				<source>Page layout - Subpages</source>
+                <target>Seitenlayout - Unterseiten</target>
+			</trans-unit>
 
             <trans-unit id="pages.palettes.page_layout">
                 <source>Page layout</source>
