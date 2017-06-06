@@ -62,12 +62,12 @@ class PageService implements SingletonInterface
     public function getPageTemplate()
     {
         $templateId = $this->configurationService->getPageConfiguration()['tx_fluidloader_layout'];
-        
-        if ($templateId === '-1' || $templateId === NULL) {
+
+        if ($templateId === '-1' || $templateId === null) {
             $templateId = $this->getInheritedPageTemplateId();
         }
 
-        if ($templateId === NULL) {
+        if ($templateId === null) {
             $templateId = '-1';
         }
 
@@ -96,7 +96,7 @@ class PageService implements SingletonInterface
         $templateId = '-1';
         $pageId = $this->configurationService->getPageConfiguration()['pid'];
 
-        while (($templateId === '-1' || $templateId === NULL) && $pageId !== 0) {
+        while (($templateId === '-1' || $templateId === null) && $pageId !== 0) {
             $config = $this->configurationService->getPageConfiguration($pageId);
             $pageId = $config['pid'];
             $templateId = $config['tx_fluidloader_subpage_layout'];

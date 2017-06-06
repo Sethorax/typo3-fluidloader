@@ -106,11 +106,11 @@ class BackendLayoutDataProvider implements DataProviderInterface
     {
         $templateId = $this->getTemplateIdOfPage($pageId, 'tx_fluidloader_layout');
 
-        if ($templateId === '-1' || $templateId === NULL) {
+        if ($templateId === '-1' || $templateId === null) {
             $templateId = $this->getInheritedTemplateId($pageId);
         }
 
-        if ($templateId === NULL) {
+        if ($templateId === null) {
             $templateId = '-1';
         }
 
@@ -124,7 +124,7 @@ class BackendLayoutDataProvider implements DataProviderInterface
      * @return string
      */
     protected function getInheritedTemplateId($pageId)
-    {   
+    {
         $templateId = '-1';
         $currentPageId = $pageId;
 
@@ -146,11 +146,11 @@ class BackendLayoutDataProvider implements DataProviderInterface
     protected function getTemplateIdOfPage($pageId, $attributeName)
     {
         $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('pages');
-        
+
         $queryBuilder
             ->getRestrictions()
             ->removeAll();
-        
+
         $layout = $queryBuilder
             ->select($attributeName)
             ->from('pages')
@@ -170,7 +170,7 @@ class BackendLayoutDataProvider implements DataProviderInterface
     protected function getPidOfPage($pageId)
     {
         $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('pages');
-        
+
         $queryBuilder
             ->getRestrictions()
             ->removeAll();
