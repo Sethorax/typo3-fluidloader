@@ -128,7 +128,7 @@ class BackendLayoutDataProvider implements DataProviderInterface
         $templateId = '-1';
         $currentPageId = $pageId;
 
-        while (($templateId === '-1' || $templateId === NULL) && $currentPageId !== 0) {
+        while (($templateId === '-1' || $templateId === null) && $currentPageId !== 0) {
             $currentPageId = $this->getPidOfPage($currentPageId);
             $templateId = $this->getTemplateIdOfPage($currentPageId, 'tx_fluidloader_subpage_layout');
         }
